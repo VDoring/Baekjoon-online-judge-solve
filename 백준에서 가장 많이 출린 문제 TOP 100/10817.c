@@ -1,88 +1,59 @@
-#include <stdio.h>
-int main() {
-	int A, B, C;
-	scanf("%d %d %d", &A, &B, &C);
-
-	if (A > B) {
-		if (A > C) {
-			if (B > C) {
-				printf("%d", B); // A°¡ Á¦ÀÏÅ©°í B°¡ Cº¸´Ù Å¬¶§(A > B > C)
-			}
-			else {//((B < C)
-				printf("%d", C); // A°¡ Á¦ÀÏÅ©°í C°¡ Bº¸´Ù Å¬¶§(A > C > B)
-			}
-		}
-		else {//(A < C)
-			printf("%d", A); // A°¡ Bº¸´Ù Å©³ª C°¡ AºÁ Å¬¶§(C > A > B)
-		}
-	}
-	else {//(A < B)
-		if (B > C) {
-			if (A > C) {
-				printf("%d", A); // B°¡ Á¦ÀÏÅ©°í A°¡ Cº¸´Ù Å¬¶§(B > A > C)
-			}
-			else {//(A < C)
-				printf("%d", C); // B°¡ Á¦ÀÏÅ©°í A°¡ Cº¸´Ù Å¬¶§(B > A > C)
-			}
-		}
-		else {//(B < C)
-			printf("%d", B); // A°¡ Bº¸´Ù, B°¡ Cº¸´Ù Å¬¶§(A < B < C)
-		}
-	}
-}
-
-
-/* ÀÛµ¿¾ÈµÊ
-
-// ÀÌº¸´Ù ´õ ÁÁÀº ¹æ¹ıÀº ¾ø´Ù!
-// ¿Í! if¹®~!
+/* ì‘ë™ì•ˆë¨ */
 
 #include <stdio.h>
 int main() {
+
+	/*
+	A > B > C
+	A > C > B
+	B > A > C
+	B > C > A
+	C > A > B
+	C > B > A
+	*/
+
 	int num1, num2, num3;
 	scanf("%d %d %d", &num1, &num2, &num3);
 
-	if (num2 > num1 && num1 > num3) { //num1Ãâ·Â case 1
-		printf("%d", num1);
-		return 0;
-	}
-	if (num2 < num1 && num3 > num1) { //num1Ãâ·Â case 2
-		printf("%d", num1);
-		return 0;
-	}
-
-	if (num1 > num2 && num2 > num3) { //num2Ãâ·Â case 1
-		printf("%d", num2);
-		return 0;
-	}
-	if (num1 < num2 && num2 < num3) { //num2Ãâ·Â case 2
-		printf("%d", num2);
-		return 0;
-	}
-
-	if (num1 > num3 && num3 > num2) { //num3Ãâ·Â case 1
-		printf("%d", num3);
-		return 0;
-	}
-	if (num1 < num3 && num3 < num2) { //num3Ãâ·Â case 2
-		printf("%d", num3);
-		return 0;
-	}
-
-	else { //°øÅëµÇ´Â ¼ö°¡ ÀÖÀ»°æ¿ì
-		if (num1 == num2 && (num1 + num2) != (num3 + num3)) { //num1. num2¸¸ °°°í num3¸¸ ÀÛÀº°æ¿ì
-			printf("%d", num1);
-			return 0;
+	if (num2 > num1) {// B > A
+		if (num1 > num3) {//A > C
+			printf("%d", num1); // B > A > C
 		}
-
-		if (num1 == num2 && num2 == num3 && num3 == num1) { //3°³ ´Ù °°Àº°æ¿ì
-			printf("%d", num1);
-			return 0;
+		else {//C > A
+			if (num2 > num3) {//B > C
+				printf("%d", num3); // B > C > A
+			}
 		}
-
-		if (num1 > num2 && num1 > num3 && num1 >= (num2 + num3)) { //num2, num3´Â °°°í num1¸¸ Å« ¼Í¿ì
-			printf("%d", num2);
-			return 0;
+		if (num3 > num2) {//C > B
+			printf("%d", num2); // C > B > A
 		}
 	}
-}*/
+	if (num1 > num2) {//A > B
+		if (num2 > num3) { //B > C
+			printf("%d", num2); // A > B > C
+		}
+		else { //B < C
+			printf("%d", num3); // A > C > B
+		}
+		if (num3 > num1) {//C > A
+			printf("%d", num1); // C > A > B
+		}
+	}
+	else {
+		if (num1 == num2 && num2 > num3) {
+			printf("%d", num2); // A = B > C
+		}
+		if (num2 == num3 && num1 > num2) {
+			printf("%d", num2); // A > B = C
+		}
+		if (num1 == num2 && num2 == num3) {
+			printf("%d", num2); // A = B = C
+		}
+		if (num1 == num3 && num2 > num3) {
+			printf("%d", num3); // B > A = C
+		}
+		if (num1 == num3 && num3 > num2) {
+			printf("%d", num3); // B < A = C
+		}
+	}
+}
