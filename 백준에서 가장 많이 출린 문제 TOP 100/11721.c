@@ -1,39 +1,34 @@
 #include <stdio.h>
 #include <string.h>
 int main() {
-	int input;
+	char text[100] = { 0, }; //문자를 저장할 배열
+	int input_startcount = 0, input_maxcout = 10; //입력용 반복문 카운트
+	int output_startcount = 0, output_maxcount = 10; //출력용 반복문 카운트
+	int i, j; //반복문 안 변수
 
-	/*
 	while (1) {
-		for (int i = 0; i < 10; i++) {
-			scanf("%c", &input);
-			printf("%c", input);
-
-			if (scanf("%c", &input) != EOF) continue;
-			else break;
+		for (i = input_startcount; i < input_maxcout; i++) { //문자 입력
+			scanf("%c", &text[i]);
 		}
-	}*/
-
-	/*
-	int i = 0;
-	while (1) {
-		while (1) { //아니면 scanf("%c", &input) != EOF 넣기
-			scanf("%c", &input);
-			printf("%c", input);
-			i++;
-
-			if (i == 10 || scanf("%c", &input) == EOF stdin == EOF) break; //10번 돌거나 입력값이 더이상 없을때 종료
-			else continue;
+		if (text[i-1] != 0) { //문자가 더 저장되있을경우
+			input_startcount += 10;
+			input_maxcout += 10;
+			continue; //다음 배열칸으로 옮긴뒤 다시 입력
 		}
-		if (scanf("%c", &input) == EOF) continue; //입력값이 남았는지 확인. 있으면 다시 반복문 실행
-		else break; 
-	}
-	*/
 
-	int i = 0;
-	while (scanf("%c", &input) != EOF) {
-		if (i == 10 || scanf("%c", &input) == EOF) break; //10번 돌거나 입력값이 더이상 없을때 종료. printf("%c", input) == 0 로도 비교 넣어보기
-		printf("%c", input);
+		while (1) {
+			for (j = output_startcount; j < output_maxcount; j++) { //문자 출력
+				printf("%c", text[j]);
+			}
+			if (text[j-1] != 0) { //문자가 더 저장되있을경우
+				output_startcount += 10;
+				output_maxcount += 10;
+				continue; //다음 배열칸으로 옮긴뒤 다시 출력
+			}
+			else
+				goto EXIT; //출력 끝
+		}
 	}
-
+EXIT:
+	return 0;
 }
