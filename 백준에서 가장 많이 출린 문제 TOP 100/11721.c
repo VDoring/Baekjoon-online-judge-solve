@@ -1,3 +1,42 @@
+//정석의 정답
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char text[100] = { 0, };
+
+	scanf("%s", text);
+
+	printf("%c", text[0]);
+	for (int i = 1; i < strlen(text); i++) {
+		if (i % 10 == 0) printf("\n");
+		printf("%c", text[i]);
+	}
+	return 0;
+}
+
+/* 무한 반복 버전
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char text[100] = { 0, };
+
+	while (1) {
+		scanf("%s", text);
+
+		printf("%c", text[0]);
+		for (int i = 1; i < strlen(text); i++) {
+			if (i % 10 == 0) printf("\n");
+			printf("%c", text[i]);
+		}
+		printf("\n");
+	}
+	return 0;
+}*/
+
+
+/* 내가 한 방법
 #include <stdio.h>
 #include <string.h>
 int main() {
@@ -32,4 +71,4 @@ int main() {
 		}
 	}
 	return 0;
-}
+}*/
