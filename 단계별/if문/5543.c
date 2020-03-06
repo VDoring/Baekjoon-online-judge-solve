@@ -16,18 +16,32 @@ int main() {
 	int high_burger = 0, mid_burger = 0, low_burger = 0;
 	int cola = 0, cider = 0;
 	int lowest_set_price = 0;
-	/*
+	/*세트를 일일이 변수로 만든 버전
 	int high_cola = 0, high_cider = 0;
 	int mid_cola = 0, mid_cider = 0;
 	int low_cola = 0, low_cider = 0;
 	*/
 
-	
+	scanf("%d %d %d %d %d", &high_burger, &mid_burger, &low_burger, &cola, &cider);
+	/* 개별 입력
 	scanf("%d", &high_burger);
 	scanf("%d", &mid_burger);
 	scanf("%d", &low_burger);
 	scanf("%d", &cola);
 	scanf("%d", &cider);
+	*/
+
+	/* 100원 이상, 2000이하 확인 구문
+	while (1) {
+		if (high_burger >= 100 && high_burger <= 2000)
+			if (mid_burger >= 100 && mid_burger <= 2000)
+				if (low_burger >= 100 && low_burger <= 2000)
+					if (cola >= 100 && cola <= 2000)
+						if (cider >= 100 && cider <= 2000)
+							break;
+		return 0;
+	}
+	*/
 
 	set_sum[0] = high_burger + cola + 0;
 	set_sum[1] = high_burger + cider + 0;
@@ -42,7 +56,7 @@ int main() {
 
 	lowest_set_price = set_sum[0] > set_sum[1] ? (set_sum[1] > set_sum[2] ? (set_sum[2] > set_sum[3] ? (set_sum[3] > set_sum[4] ? (set_sum[4] > set_sum[5] ? set_sum[5] : set_sum[4]) : (set_sum[3] > set_sum[5] ? set_sum[5] : set_sum[3])) : (set_sum[2] > set_sum[4] ? (set_sum[3] > set_sum[5] ? set_sum[5] : set_sum[3]) : (set_sum[2] > set_sum[5] ? set_sum[5] : set_sum[2]))) : (set_sum[1] > set_sum[3] ? (set_sum[2] > set_sum[4] ? (set_sum[3] > set_sum[5] ? set_sum[5] : set_sum[3]) : (set_sum[2] > set_sum[5] ? set_sum[5] : set_sum[2])) : (set_sum[1] > set_sum[4] ? (set_sum[2] > set_sum[5] ? set_sum[5] : set_sum[2]) : (set_sum[1] > set_sum[5] ? set_sum[5] : set_sum[1])))) : (set_sum[0] > set_sum[2] ? (set_sum[1] > set_sum[3] ? (set_sum[2] > set_sum[4] ? (set_sum[3] > set_sum[5] ? set_sum[5] : set_sum[3]) : (set_sum[2] > set_sum[5] ? set_sum[5] : set_sum[2])) : (set_sum[1] > set_sum[4] ? (set_sum[2] > set_sum[5] ? set_sum[5] : set_sum[2]) : (set_sum[1] > set_sum[5] ? set_sum[5] : set_sum[1]))) : (set_sum[0] > set_sum[3] ? (set_sum[1] > set_sum[4] ? (set_sum[2] > set_sum[5] ? set_sum[5] : set_sum[2]) : (set_sum[1] > set_sum[5] ? set_sum[5] : set_sum[1])) : (set_sum[0] > set_sum[4] ? (set_sum[1] > set_sum[5] ? set_sum[5] : set_sum[1]) : (set_sum[0] > set_sum[5] ? set_sum[5] : set_sum[0]))));
 
-	printf("%d", lowest_set_price);
+	printf("%d", lowest_set_price - 50);
 
 	return 0;
 }
