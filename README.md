@@ -1,2 +1,4 @@
 # My-Baekjoon-online-judge
-백준 온라인저지에서 푼 문제들을 모아놓는 곳
+백준에서 해결한 문제들 저장소.
+
+https://www.acmicpc.net/
