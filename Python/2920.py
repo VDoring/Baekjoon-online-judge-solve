@@ -14,4 +14,4 @@ if a == sorted(a):
 elif a == sorted(a, reverse=True):
     print('descending')
 else:
-    print('mixed')
+    print('mixed') 
